@@ -3,17 +3,18 @@ import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 
 export const MyPosts = () => {
-    return (
-        <div className={s.content}>
+	return (
+		<div className={s.content}>
 
-            <p>my posts</p>
-            <form action="#">
-                <textarea name="newPost" id="newPost"></textarea>
-                <button>Add</button>
-            </form>
-            <Post message="message1" />
-            <Post message="message2" />
-        </div>
-    );
+			<p>my posts</p>
+			<form action="#">
+				<textarea name="newPost" id="newPost"></textarea>
+				<button>Add</button>
+			</form>
+
+			<Post message="message1"/>
+			<Post message="message2"/>
+		</div>
+	);
 };
 
