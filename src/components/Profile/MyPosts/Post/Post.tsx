@@ -1,7 +1,9 @@
 import React from 'react';
 import s from './Post.module.css'
-
-export const Post = (props) => {
+type PostPropsType = {
+    message:string
+}
+export const Post = (props:PostPropsType) => {
     return (
         <div className={s.post}>
             <img

@@ -8,7 +8,7 @@ export const MyPosts = () => {
 
             <p>my posts</p>
             <form action="#">
-                <textarea name="newPost" id="newPost" cols="30" rows="10"></textarea>
+                <textarea name="newPost" id="newPost"></textarea>
                 <button>Add</button>
             </form>
             <Post message="message1" />
