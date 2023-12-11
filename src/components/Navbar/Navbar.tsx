@@ -10,16 +10,16 @@ export const Navbar = () => {
 					<NavLink to="/profile" activeClassName={s.active}>Profiles</NavLink>
 				</li>
 				<li className={s.item}>
-					<NavLink to="/dialogs" activeClassName={s.active}>News</NavLink>
-				</li>
-				<li className={s.item}>
 					<NavLink to="/dialog" activeClassName={s.active}>Messanges</NavLink>
 				</li>
 				<li className={s.item}>
-					<NavLink to="/dialogs" activeClassName={s.active}>Music</NavLink>
+					<NavLink to="/news" activeClassName={s.active}>News</NavLink>
 				</li>
 				<li className={s.item}>
-					<NavLink to="/dialogs" activeClassName={s.active}>Settings</NavLink>
+					<NavLink to="/music" activeClassName={s.active}>Music</NavLink>
+				</li>
+				<li className={s.item}>
+					<NavLink to="/settings" activeClassName={s.active}>Settings</NavLink>
 				</li>
 			</ul>
 		</nav>
