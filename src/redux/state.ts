@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 export type PostType = {
 	id: number
 	text: string
@@ -5,6 +7,7 @@ export type PostType = {
 }
 export type ProfilePageType = {
 	posts: Array<PostType>
+	newPostText: string
 }
 
 export type MessengesType = {
@@ -36,6 +39,7 @@ export type RootStateType = {
 
 export const state: RootStateType = {
 	profilePage: {
+		newPostText: "new post!!",
 		posts: [
 			{
 				id: 1,
@@ -84,12 +88,20 @@ export const state: RootStateType = {
 		]
 	}
 }
-export const addPost = (post: string) => {
+export const addPost = () => {
 	const newPost: PostType = {
 		id: state.profilePage.posts.length,
-		text: post,
+		text: state.profilePage.newPostText,
 		avaUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPGqX4s6HDBoVTLwIhy3fFmdxvMiDIfUtdA&usqp=CAU"
 	}
 	state.profilePage.posts.push(newPost)
+	state.profilePage.newPostText = ""
 	console.log("=>(state.ts:94) state.profilePage.posts", state.profilePage.posts);
+	rerenderEntireTree(state)
+}
+
+export const updateNewPostText = (newText: string) => {
+	state.profilePage.newPostText = newText
+	console.log("=>(state.ts:102) state.profilePage.newPostText", state.profilePage.newPostText);
+	rerenderEntireTree(state)
 }
