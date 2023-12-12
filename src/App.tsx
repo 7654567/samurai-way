@@ -4,26 +4,28 @@ import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import {Settings} from "./components/Settings/Settings";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
+import {RootStateType} from "./redux/state";
 
-function App() {
+type AppPropsTypes = { state: RootStateType }
+
+function App(props: AppPropsTypes) {
 	return (
-		<BrowserRouter>
-			<div className="App">
-				<Header/>
-				<Navbar/>
-				<div className="content">
-					<Route path={"/dialog"} component={Dialogs}/>
-					<Route path={"/profile"} component={Profile}/>
-					<Route path={"/news"} component={News}/>
-					<Route path={"/music"} component={Music}/>
-					<Route path={"/settings"} component={Settings}/>
-				</div>
+
+		<div className="App">
+			<Header/>
+			<Navbar menuItems={props.state.navbar.menuItems}/>
+			<div className="content">
+				<Route path={"/profile"} render={() => <Profile posts={props.state.profilePage.posts}/>}/>
+				<Route path={"/dialog"} render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
+				<Route path={"/news"} render={() => <News/>}/>
+				<Route path={"/music"} render={() => <Music/>}/>
+				<Route path={"/settings"} render={() => <Settings/>}/>
 			</div>
-		</BrowserRouter>
+		</div>
 	);
 }
 

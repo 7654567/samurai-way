@@ -1,26 +1,23 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
+import {NavbarType} from "../../redux/state";
 
-export const Navbar = () => {
+export const Navbar = (props: NavbarType) => {
 	return (
 		<nav className={s.nav}>
 			<ul>
-				<li className={`${s.item} ${s.active}`}>
-					<NavLink to="/profile" activeClassName={s.active}>Profiles</NavLink>
-				</li>
-				<li className={s.item}>
-					<NavLink to="/dialog" activeClassName={s.active}>Messanges</NavLink>
-				</li>
-				<li className={s.item}>
-					<NavLink to="/news" activeClassName={s.active}>News</NavLink>
-				</li>
-				<li className={s.item}>
-					<NavLink to="/music" activeClassName={s.active}>Music</NavLink>
-				</li>
-				<li className={s.item}>
-					<NavLink to="/settings" activeClassName={s.active}>Settings</NavLink>
-				</li>
+				{props.menuItems.map(i => {
+					return (
+						<li className={s.item}>
+							<NavLink to={i.url} activeClassName={s.active}>{i.text}</NavLink>
+						</li>
+					)
+				})}
+
+				{/*<li className={`${s.item} ${s.active}`}>*/}
+				{/*	<NavLink to="/settings" activeClassName={s.active}>Settings</NavLink>*/}
+				{/*</li>*/}
 			</ul>
 		</nav>
 	);
