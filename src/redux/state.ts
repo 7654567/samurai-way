@@ -84,3 +84,12 @@ export const state: RootStateType = {
 		]
 	}
 }
+export const addPost = (post: string) => {
+	const newPost: PostType = {
+		id: state.profilePage.posts.length,
+		text: post,
+		avaUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPGqX4s6HDBoVTLwIhy3fFmdxvMiDIfUtdA&usqp=CAU"
+	}
+	state.profilePage.posts.push(newPost)
+	console.log("=>(state.ts:94) state.profilePage.posts", state.profilePage.posts);
+}

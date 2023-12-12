@@ -10,16 +10,25 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {RootStateType} from "./redux/state";
 
-type AppPropsTypes = { state: RootStateType }
+type AppPropsTypes = {
+	state: RootStateType
+	addPost: Function
+}
 
 function App(props: AppPropsTypes) {
+	console.log("=>(App.tsx:19) props", props);
 	return (
 
 		<div className="App">
 			<Header/>
 			<Navbar menuItems={props.state.navbar.menuItems}/>
 			<div className="content">
-				<Route path={"/profile"} render={() => <Profile posts={props.state.profilePage.posts}/>}/>
+				<Route path={"/profile"}
+					   render={
+						   () => <Profile
+							   state={props.state.profilePage.posts}
+							   addPost={props.addPost}
+						   />}/>
 				<Route path={"/dialog"} render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
 				<Route path={"/news"} render={() => <News/>}/>
 				<Route path={"/music"} render={() => <Music/>}/>

@@ -1,9 +1,13 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {ProfilePageType} from "../../../redux/state";
+import {PostType} from "../../../redux/state";
 
-export const MyPosts = (props: ProfilePageType) => {
+type MyPostsPropsType = {
+	posts: Array<PostType>
+	addPost: Function
+}
+export const MyPosts = (props: MyPostsPropsType) => {
 	// const posts = [
 	// 	{
 	// 		id: 1,
@@ -27,13 +31,21 @@ export const MyPosts = (props: ProfilePageType) => {
 	// 	},
 	//
 	// ]
+	const textArea: React.RefObject<any> = React.createRef()
+
+//TODO React.RefObject<any>
+	function addPost() {
+		const text = textArea.current.value
+		alert(text)
+	}
+
 
 	return (
 		<div className={s.content}>
 			<p>my posts</p>
 			<form action="#">
-				<textarea name="newPost" id="newPost"></textarea>
-				<button>Add</button>
+				<textarea ref={textArea}></textarea>
+				<button onClick={addPost}>Add</button>
 			</form>
 
 			{props.posts.map(p => <Post post={p}/>)}
