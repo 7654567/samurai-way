@@ -1,12 +1,11 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {ProfilePageType} from "../../../redux/state";
+import {addPostActionCreator, ProfilePageType, updateNewPostTextActionCreator} from "../../../redux/state";
 
 type MyPostsPropsType = {
 	posts: ProfilePageType
-	addPost: Function
-	updateNewPostText: Function
+	dispatch: Function
 }
 export const MyPosts = (props: MyPostsPropsType) => {
 
@@ -14,15 +13,13 @@ export const MyPosts = (props: MyPostsPropsType) => {
 
 //TODO React.RefObject<any>
 	function addPost() {
-		const text = textArea.current.value
-		props.addPost(text)
+		props.dispatch(addPostActionCreator())
 	}
 
 	function onPostChange() {
 		const text = textArea.current.value
 		console.log("=>(MyPosts.tsx:23) text", text);
-
-		props.updateNewPostText(text)
+		props.dispatch(updateNewPostTextActionCreator(text))
 	}
 
 

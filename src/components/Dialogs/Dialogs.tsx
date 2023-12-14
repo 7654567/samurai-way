@@ -7,7 +7,7 @@ type DialogsPropsTypes = {
 	dialogsPage: DialogsPageType
 }
 export const Dialogs = (props: DialogsPropsTypes) => {
-
+ 
 	return (
 		<div className={s.dialogs}>
 			<div className={s.dialogsItems}>
