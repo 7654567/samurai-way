@@ -16,7 +16,6 @@ type AppPropsTypes = {
 }
 
 function App(props: AppPropsTypes) {
-	console.log("=>(App.tsx:19) props", props);
 	return (
 
 		<div className="App">
@@ -29,7 +28,8 @@ function App(props: AppPropsTypes) {
 							   state={props.state.profilePage}
 							   dispatch={props.dispatch}
 						   />}/>
-				<Route path={"/dialog"} render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
+				<Route path={"/dialog"}
+					   render={() => <Dialogs dialogsPage={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
 				<Route path={"/news"} render={() => <News/>}/>
 				<Route path={"/music"} render={() => <Music/>}/>
 				<Route path={"/settings"} render={() => <Settings/>}/>

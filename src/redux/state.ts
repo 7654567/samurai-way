@@ -16,6 +16,7 @@ export type DialogType = {
 	name: string
 }
 export type DialogsPageType = {
+	newMessangeText: string
 	dialogs: Array<DialogType>
 	messenges: Array<MessengesType>
 }
@@ -34,6 +35,8 @@ export type RootStateType = {
 
 export const ADD_POST = "ADD-POST"
 export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+export const ADD_MESSANGE = "ADD-MESSANGE"
+export const UPDATE_NEW_MESSANGE_TEXT = "UPDATE-NEW-MESSANGE-TEXT"
 export const store = {
 	_state: {
 		profilePage: {
@@ -63,6 +66,7 @@ export const store = {
 			]
 		},
 		dialogsPage: {
+			newMessangeText: "new messange",
 			dialogs: [
 				{id: 1, name: "Dimych"},
 				{id: 2, name: "Andrey"},
@@ -108,17 +112,36 @@ export const store = {
 		console.log("=>(state.ts:102) state.profilePage.newPostText", this._state.profilePage.newPostText);
 		this._callSubscriber()
 	},
+	addMessage() {
+
+		const newMessange: MessengesType = {
+			id: this._state.dialogsPage.messenges.length,
+			messange: this._state.dialogsPage.newMessangeText
+		}
+		console.log("=>(state.ts:121) newMessange", newMessange);
+		this._state.dialogsPage.messenges.push(newMessange)
+		console.log("=>(state.ts:122) this._state.dialogsPage.messenges", this._state.dialogsPage.messenges);
+		this._state.dialogsPage.newMessangeText = ""
+		this._callSubscriber()
+	},
+	updateNewMessageText(newText: string) {
+		this._state.dialogsPage.newMessangeText = newText
+		this._callSubscriber()
+	},
 	subscribe(observer: any) {
 		this._callSubscriber = observer
 	},
 	dispatch(action: any) {
-		console.log("=>(state.ts:118) ß", this);
 		if (action.type === "ADD-POST") this.addPost()
 		if (action.type === "UPDATE-NEW-POST-TEXT") this.updateNewPostText(action.newText)
+		if (action.type === "ADD-MESSANGE") this.addMessage()
+		if (action.type === "UPDATE-NEW-MESSANGE-TEXT") this.updateNewMessageText(action.newText)
 	}
 }
 
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const addMessangeActionCreator = () => ({type: ADD_MESSANGE})
+export const updateNewMessangeTextActionCreator = (text: string) => ({type: UPDATE_NEW_MESSANGE_TEXT, newText: text})
 
 

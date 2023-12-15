@@ -1,22 +1,45 @@
 import React from 'react';
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
-import {DialogsPageType, DialogType, MessengesType} from "../../redux/state";
+import {
+	addMessangeActionCreator,
+	DialogsPageType,
+	DialogType,
+	MessengesType,
+	updateNewMessangeTextActionCreator,
+} from "../../redux/state";
 
 type DialogsPropsTypes = {
 	dialogsPage: DialogsPageType
+	dispatch: Function
 }
 export const Dialogs = (props: DialogsPropsTypes) => {
- 
+	function addMessange(e: any) {
+		console.log(e)
+		props.dispatch(addMessangeActionCreator())
+	}
+
+	function onMessangeChange(e: any) {
+		const text = e.target.value
+		props.dispatch(updateNewMessangeTextActionCreator(text))
+	}
+
 	return (
-		<div className={s.dialogs}>
-			<div className={s.dialogsItems}>
-				{props.dialogsPage.dialogs.map(el => <Dialog dialog={el}/>)}
+		<>
+			<div className={s.dialogs}>
+				<div className={s.dialogsItems}>
+					{props.dialogsPage.dialogs.map(el => <Dialog dialog={el}/>)}
+				</div>
+				<div className={s.messanges}>
+
+					<form action="#">
+						<textarea onChange={onMessangeChange} value={props.dialogsPage.newMessangeText}></textarea>
+						<button onClick={addMessange}>add message</button>
+					</form>
+					{props.dialogsPage.messenges.map(el => <Messange messange={el}/>)}
+				</div>
 			</div>
-			<div className={s.messanges}>
-				{props.dialogsPage.messenges.map(el => <Messange messange={el}/>)}
-			</div>
-		</div>
+		</>
 	);
 };
 
