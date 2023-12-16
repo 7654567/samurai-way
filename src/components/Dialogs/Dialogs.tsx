@@ -2,12 +2,11 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import {
-	addMessangeActionCreator,
 	DialogsPageType,
 	DialogType,
-	MessengesType,
-	updateNewMessangeTextActionCreator,
+	MessengesType
 } from "../../redux/state";
+import {addMessangeActionCreator, updateNewMessangeTextActionCreator} from "../../redux/dialogs-reducer";
 
 type DialogsPropsTypes = {
 	dialogsPage: DialogsPageType

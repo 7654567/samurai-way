@@ -1,3 +1,6 @@
+import {dialogsReducer} from "./dialogs-reducer";
+import {profileReducer} from "./ profile-reducer";
+
 export type PostType = {
 	id: number
 	text: string
@@ -33,10 +36,7 @@ export type RootStateType = {
 	navbar: NavbarType
 }
 
-export const ADD_POST = "ADD-POST"
-export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
-export const ADD_MESSANGE = "ADD-MESSANGE"
-export const UPDATE_NEW_MESSANGE_TEXT = "UPDATE-NEW-MESSANGE-TEXT"
+
 export const store = {
 	_state: {
 		profilePage: {
@@ -96,52 +96,52 @@ export const store = {
 	_callSubscriber() {
 		console.log("rerender")
 	},
-	addPost() {
-		const newPost: PostType = {
-			id: this._state.profilePage.posts.length,
-			text: this._state.profilePage.newPostText,
-			avaUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPGqX4s6HDBoVTLwIhy3fFmdxvMiDIfUtdA&usqp=CAU"
-		}
-		this._state.profilePage.posts.push(newPost)
-		this._state.profilePage.newPostText = ""
-		console.log("=>(state.ts:94) state.profilePage.posts", this._state.profilePage.posts);
-		this._callSubscriber()
-	},
-	updateNewPostText(newText: string) {
-		this._state.profilePage.newPostText = newText
-		console.log("=>(state.ts:102) state.profilePage.newPostText", this._state.profilePage.newPostText);
-		this._callSubscriber()
-	},
-	addMessage() {
-
-		const newMessange: MessengesType = {
-			id: this._state.dialogsPage.messenges.length,
-			messange: this._state.dialogsPage.newMessangeText
-		}
-		console.log("=>(state.ts:121) newMessange", newMessange);
-		this._state.dialogsPage.messenges.push(newMessange)
-		console.log("=>(state.ts:122) this._state.dialogsPage.messenges", this._state.dialogsPage.messenges);
-		this._state.dialogsPage.newMessangeText = ""
-		this._callSubscriber()
-	},
-	updateNewMessageText(newText: string) {
-		this._state.dialogsPage.newMessangeText = newText
-		this._callSubscriber()
-	},
+	// addPost() {
+	// 	const newPost: PostType = {
+	// 		id: this._state.profilePage.posts.length,
+	// 		text: this._state.profilePage.newPostText,
+	// 		avaUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPGqX4s6HDBoVTLwIhy3fFmdxvMiDIfUtdA&usqp=CAU"
+	// 	}
+	// 	this._state.profilePage.posts.push(newPost)
+	// 	this._state.profilePage.newPostText = ""
+	// 	console.log("=>(state.ts:94) state.profilePage.posts", this._state.profilePage.posts);
+	// 	this._callSubscriber()
+	// },
+	// updateNewPostText(newText: string) {
+	// 	this._state.profilePage.newPostText = newText
+	// 	console.log("=>(state.ts:102) state.profilePage.newPostText", this._state.profilePage.newPostText);
+	// 	this._callSubscriber()
+	// },
+	// addMessage() {
+	//
+	// 	const newMessange: MessengesType = {
+	// 		id: this._state.dialogsPage.messenges.length,
+	// 		messange: this._state.dialogsPage.newMessangeText
+	// 	}
+	// 	console.log("=>(state.ts:121) newMessange", newMessange);
+	// 	this._state.dialogsPage.messenges.push(newMessange)
+	// 	console.log("=>(state.ts:122) this._state.dialogsPage.messenges", this._state.dialogsPage.messenges);
+	// 	this._state.dialogsPage.newMessangeText = ""
+	// 	this._callSubscriber()
+	// },
+	// updateNewMessageText(newText: string) {
+	// 	this._state.dialogsPage.newMessangeText = newText
+	// 	this._callSubscriber()
+	// },
 	subscribe(observer: any) {
 		this._callSubscriber = observer
 	},
 	dispatch(action: any) {
-		if (action.type === "ADD-POST") this.addPost()
-		if (action.type === "UPDATE-NEW-POST-TEXT") this.updateNewPostText(action.newText)
-		if (action.type === "ADD-MESSANGE") this.addMessage()
-		if (action.type === "UPDATE-NEW-MESSANGE-TEXT") this.updateNewMessageText(action.newText)
+		// if (action.type === ADD_POST) this.addPost()
+		// if (action.type === UPDATE_NEW_POST_TEXT) this.updateNewPostText(action.newText)
+		// if (action.type === ADD_MESSANGE) this.addMessage()
+		// if (action.type === UPDATE_NEW_MESSANGE_TEXT) this.updateNewMessageText(action.newText)
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+		this._state.profilePage = profileReducer(this._state.profilePage, action)
+
+		this._callSubscriber()
 	}
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
-export const addMessangeActionCreator = () => ({type: ADD_MESSANGE})
-export const updateNewMessangeTextActionCreator = (text: string) => ({type: UPDATE_NEW_MESSANGE_TEXT, newText: text})
 
 
