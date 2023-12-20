@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './Profile.module.css';
 import {MyPosts} from "./MyPosts/MyPosts";
-import {ProfilePageType} from "../../redux/state";
+import {ProfilePageType} from "../../redux/store";
 
 type ProfilePropsType = {
-	state: ProfilePageType
+	state: any
 	dispatch: Function
 }
 

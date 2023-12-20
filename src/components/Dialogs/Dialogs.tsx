@@ -5,11 +5,11 @@ import {
 	DialogsPageType,
 	DialogType,
 	MessengesType
-} from "../../redux/state";
+} from "../../redux/store";
 import {addMessangeActionCreator, updateNewMessangeTextActionCreator} from "../../redux/dialogs-reducer";
 
 type DialogsPropsTypes = {
-	dialogsPage: DialogsPageType
+	state: any
 	dispatch: Function
 }
 export const Dialogs = (props: DialogsPropsTypes) => {
@@ -27,15 +27,16 @@ export const Dialogs = (props: DialogsPropsTypes) => {
 		<>
 			<div className={s.dialogs}>
 				<div className={s.dialogsItems}>
-					{props.dialogsPage.dialogs.map(el => <Dialog dialog={el}/>)}
+					{props.state.dialogs.map((el: any) => <Dialog dialog={el}/>)}
 				</div>
 				<div className={s.messanges}>
 
 					<form action="#">
-						<textarea onChange={onMessangeChange} value={props.dialogsPage.newMessangeText}></textarea>
+						<textarea onChange={onMessangeChange}
+								  value={props.state.newMessangeText}></textarea>
 						<button onClick={addMessange}>add message</button>
 					</form>
-					{props.dialogsPage.messenges.map(el => <Messange messange={el}/>)}
+					{props.state.messenges.map((el: any) => <Messange messange={el}/>)}
 				</div>
 			</div>
 		</>
@@ -46,6 +47,7 @@ type DialogPropsType = {
 	dialog: DialogType
 }
 const Dialog = (props: DialogPropsType) => {
+
 	return (
 		<div className={s.dialog}>
 			<NavLink to={"/dialogs/" + props.dialog.id}>{props.dialog.name}</NavLink>

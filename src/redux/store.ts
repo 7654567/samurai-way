@@ -96,38 +96,6 @@ export const store = {
 	_callSubscriber() {
 		console.log("rerender")
 	},
-	// addPost() {
-	// 	const newPost: PostType = {
-	// 		id: this._state.profilePage.posts.length,
-	// 		text: this._state.profilePage.newPostText,
-	// 		avaUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPGqX4s6HDBoVTLwIhy3fFmdxvMiDIfUtdA&usqp=CAU"
-	// 	}
-	// 	this._state.profilePage.posts.push(newPost)
-	// 	this._state.profilePage.newPostText = ""
-	// 	console.log("=>(state.ts:94) state.profilePage.posts", this._state.profilePage.posts);
-	// 	this._callSubscriber()
-	// },
-	// updateNewPostText(newText: string) {
-	// 	this._state.profilePage.newPostText = newText
-	// 	console.log("=>(state.ts:102) state.profilePage.newPostText", this._state.profilePage.newPostText);
-	// 	this._callSubscriber()
-	// },
-	// addMessage() {
-	//
-	// 	const newMessange: MessengesType = {
-	// 		id: this._state.dialogsPage.messenges.length,
-	// 		messange: this._state.dialogsPage.newMessangeText
-	// 	}
-	// 	console.log("=>(state.ts:121) newMessange", newMessange);
-	// 	this._state.dialogsPage.messenges.push(newMessange)
-	// 	console.log("=>(state.ts:122) this._state.dialogsPage.messenges", this._state.dialogsPage.messenges);
-	// 	this._state.dialogsPage.newMessangeText = ""
-	// 	this._callSubscriber()
-	// },
-	// updateNewMessageText(newText: string) {
-	// 	this._state.dialogsPage.newMessangeText = newText
-	// 	this._callSubscriber()
-	// },
 	subscribe(observer: any) {
 		this._callSubscriber = observer
 	},
