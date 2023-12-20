@@ -8,12 +8,12 @@ import {Route} from "react-router-dom";
 import {Settings} from "./components/Settings/Settings";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
-import {RootStateType} from "./redux/store";
+// import {RootStateType} from "./redux/store";
 
-type AppPropsTypes = {
-	state: RootStateType
-	dispatch: Function
-}
+// type AppPropsTypes = {
+// 	state: RootStateType
+// 	dispatch: Function
+// }
 
 function App(props: any) {
 
