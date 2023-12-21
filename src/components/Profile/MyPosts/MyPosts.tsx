@@ -1,39 +1,40 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {ProfilePageType,} from "../../../redux/store";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/ profile-reducer";
 
-type MyPostsPropsType = {
-	posts: ProfilePageType
-	dispatch: Function
-}
-export const MyPosts = (props: MyPostsPropsType) => {
+// type MyPostsPropsType = {
+// 	posts: ProfilePageType
+// 	onPostChange: Function
+// 	addPost: Function
+//
+// }
+export const MyPosts = (props: any) => {
 
+	console.log("=>(MyPosts.tsx:42) props", props);
 	const textArea: React.RefObject<any> = React.createRef()
 
 //TODO React.RefObject<any>
+
 	function addPost() {
-		props.dispatch(addPostActionCreator())
+		props.addPost()
 	}
 
+	//
 	function onPostChange() {
 		const text = textArea.current.value
-		console.log("=>(MyPosts.tsx:23) text", text);
-		props.dispatch(updateNewPostTextActionCreator(text))
+		props.onPostChange(text)
 	}
 
 
 	return (
 		<div className={s.content}>
 			<p>my posts</p>
-			<form action="#">
-				<textarea ref={textArea} onChange={onPostChange} value={props.posts.newPostText}></textarea>
+			<form action={'#'} noValidate>
+				<textarea ref={textArea} onChange={onPostChange} value={props.state.newPostText}></textarea>
 				<button onClick={addPost}>Add</button>
 			</form>
 
-			{props.posts.posts.map(p => <Post post={p}/>)}
+			{props.state.posts.map((p: any) => <Post post={p}/>)}
 		</div>
 	);
 };
-

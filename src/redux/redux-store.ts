@@ -9,5 +9,5 @@ const reducers = combineReducers({
 	navbar: navbarReducer
 })
 const store = createStore(reducers)
-console.log("=>(redux-store.ts:10) store", store);
+// console.log("=>(redux-store.ts:10) store", store);
 export default store

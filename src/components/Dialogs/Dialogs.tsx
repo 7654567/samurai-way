@@ -6,21 +6,23 @@ import {
 	DialogType,
 	MessengesType
 } from "../../redux/store";
-import {addMessangeActionCreator, updateNewMessangeTextActionCreator} from "../../redux/dialogs-reducer";
 
-type DialogsPropsTypes = {
-	state: any
-	dispatch: Function
-}
-export const Dialogs = (props: DialogsPropsTypes) => {
+// type DialogsPropsTypes = {
+// 	state: any
+// 	dispatch: Function
+// }
+export const Dialogs = (props: any) => {
+	const state = props.state
+	console.log("=>(Dialogs.tsx:45) props", state);
+
 	function addMessange(e: any) {
 		console.log(e)
-		props.dispatch(addMessangeActionCreator())
+		props.addMessange()
 	}
 
 	function onMessangeChange(e: any) {
 		const text = e.target.value
-		props.dispatch(updateNewMessangeTextActionCreator(text))
+		props.onMessangeChange(text)
 	}
 
 	return (
@@ -31,7 +33,7 @@ export const Dialogs = (props: DialogsPropsTypes) => {
 				</div>
 				<div className={s.messanges}>
 
-					<form action="#">
+					<form action={'#'}>
 						<textarea onChange={onMessangeChange}
 								  value={props.state.newMessangeText}></textarea>
 						<button onClick={addMessange}>add message</button>
@@ -42,7 +44,6 @@ export const Dialogs = (props: DialogsPropsTypes) => {
 		</>
 	);
 };
-
 type DialogPropsType = {
 	dialog: DialogType
 }
