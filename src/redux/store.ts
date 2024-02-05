@@ -1,5 +1,5 @@
 import {dialogsReducer} from "./dialogs-reducer";
-import {profileReducer} from "./ profile-reducer";
+import {profileReducer} from "./profile-reducer";
 
 export type PostType = {
 	id: number

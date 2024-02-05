@@ -4,14 +4,20 @@ import {NavLink} from "react-router-dom";
 // import {NavbarType} from "../../redux/store";
 
 export const Navbar = (props: any) => {
-	console.log("=>(Navbar.tsx:8) props.store.getState()", props.store.getState());
-	const state = props.store.getState().navbar.menuItems
+	const state = [
+		{text: "Profiles", url: "/profile"},
+		{text: "Messanges", url: "/dialog"},
+		{text: "News", url: "/news"},
+		{text: "Music", url: "/music"},
+		{text: "Settings", url: "settings"},
+	]
+	// const state = props.store.getState().navbar.menuItems
 	return (
 		<nav className={s.nav}>
 			<ul>
-				{state.map((i: any) => {
+				{state.map((i: any, index) => {
 					return (
-						<li className={s.item}>
+						<li className={s.item} key={index}>
 							<NavLink to={i.url} activeClassName={s.active}>{i.text}</NavLink>
 						</li>
 					)

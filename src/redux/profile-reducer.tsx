@@ -30,18 +30,20 @@ const initialState = {
 
 export const profileReducer = (state: any = initialState, action: any) => {
 	switch (action.type) {
-		case ADD_POST:
+		case ADD_POST: {
 			const newPost = {
 				id: state.posts.length,
 				text: state.newPostText,
 				avaUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPGqX4s6HDBoVTLwIhy3fFmdxvMiDIfUtdA&usqp=CAU"
 			}
-			state.posts.push(newPost)
 			state.newPostText = ""
-			return state
-		case UPDATE_NEW_POST_TEXT:
-			state.newPostText = action.newText
-			return state
+			return {...state, posts: [...state.posts, newPost]}
+		}
+		case UPDATE_NEW_POST_TEXT: {
+			let newState = {...state}
+			newState.newPostText = action.newText
+			return newState
+		}
 		default:
 			return state
 	}

@@ -20,8 +20,8 @@ export const MyPosts = (props: any) => {
 	}
 
 	//
-	function onPostChange() {
-		const text = textArea.current.value
+	function onPostChange(e: any) {
+		const text = e.currentTarget.value
 		props.onPostChange(text)
 	}
 
