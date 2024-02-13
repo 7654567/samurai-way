@@ -34,7 +34,7 @@ export const MyPosts = (props: any) => {
 				<button onClick={addPost}>Add</button>
 			</form>
 
-			{props.state.posts.map((p: any) => <Post post={p}/>)}
+			{props.state.posts.map((p: any) => <Post post={p} key={p.id}/>)}
 		</div>
 	);
 };

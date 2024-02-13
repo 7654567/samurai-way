@@ -8,6 +8,7 @@ import {Settings} from "./components/Settings/Settings";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import {UsersContainer} from "./components/Users/UsersContainer";
 // import {RootStateType} from "./redux/store";
 
 // type AppPropsTypes = {
@@ -22,11 +23,9 @@ function App(props: any) {
 			<Header/>
 			<Navbar store={props.store}/>
 			<div className="content">
-				<Route path={"/profile"}
-					   render={
-						   () => <Profile store={props.store}/>}/>
-				<Route path={"/dialog"}
-					   render={() => <DialogsContainer /*store={props.store}*//>}/>
+				<Route path={"/profile"} render={() => <Profile/>}/>
+				<Route path={"/dialog"} render={() => <DialogsContainer/>}/>
+				<Route path={"/users"} render={() => <UsersContainer/>}/>
 				<Route path={"/news"} render={() => <News/>}/>
 				<Route path={"/music"} render={() => <Music/>}/>
 				<Route path={"/settings"} render={() => <Settings/>}/>

@@ -37,21 +37,22 @@
 /*  }*/
 /*}*/
 .App {
-  width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-areas:
+	width: 1200px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-areas:
   "h h"
-  "n c"
-;
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
+  "n c";
+	grid-template-rows: 60px 1fr;
+	grid-template-columns: 2fr 10fr;
+	grid-gap: 10px;
 }
+
 .content {
-  grid-area: c;
-  background-color: #ccf;
+	grid-area: c;
+	background-color: #ccf;
 }
-.content img {
-  width: 100%;
-}
+
+/*.content .img {*/
+/*	width: 100%;*/
+/*}*/

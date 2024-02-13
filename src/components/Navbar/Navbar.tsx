@@ -7,6 +7,7 @@ export const Navbar = (props: any) => {
 	const state = [
 		{text: "Profiles", url: "/profile"},
 		{text: "Messanges", url: "/dialog"},
+		{text: "Users", url: "/users"},
 		{text: "News", url: "/news"},
 		{text: "Music", url: "/music"},
 		{text: "Settings", url: "settings"},
