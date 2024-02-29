@@ -1,35 +1,9 @@
-import {
-	addUsers,
-	follow,
-	setCurrentPage,
-	setTotalUserCount,
-	toggleIsFetching,
-	unfollow
-} from "../../redux/users-reducer";
-// import {Users} from "./Users";
-import {connect} from "react-redux";
-// import {UsersComponent} from "./UsersComponent";
-import React from "react";
+import React from 'react';
 import axios from "axios";
-import preloader from "../../assets/Spinner3.gif";
-import {Pagination} from "../Pagination/Pagination";
+// import s from "./Users.module.css";
 import {UsersUI} from "./UsersUI";
-
-const mapStateToProps = (state: any) => ({
-	users: state.usersPage.users,
-	pageSize: state.usersPage.pageSize,
-	totalUsersCount: state.usersPage.totalUsersCount,
-	currentPage: state.usersPage.currentPage,
-	isFetching: state.usersPage.isFetching
-})
-// const mapDispachToProps = (dispatch: any) => ({
-// 	follow: (id: any) => dispatch(follow(id)),
-// 	unfollow: (id: any) => dispatch(unfollow(id)),
-// 	addUsers: (users: any) => dispatch(addUsers(users)),
-// 	setCurrentPage: (num: any) => dispatch(setCurrentPage(num)),
-// 	setTotalUserCount: (num: any) => dispatch(setTotalUserCount(num)),
-// 	toggleIsFetching: (isFetching: any) => dispatch(toggleIsFetching(isFetching))
-// })
+import {Pagination} from "../Pagination/Pagination";
+import preloader from "../../assets/Spinner3.gif"
 
 export class UsersComponent extends React.Component<any, any> {
 
@@ -42,6 +16,20 @@ export class UsersComponent extends React.Component<any, any> {
 		})
 	}
 
+	// constructor(props: any) {
+	// 	super(props);
+	// 	axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any) => {
+	// 		this.props.addUsers(response.data.items)
+	// 	})
+	// }
+
+
+	// getUsers = () => {
+	// 	axios.get('https://social-network.samuraijs.com/api/1.0/users?count=3').then((response: any) => {
+	// 		this.props.addUsers(response.data.items)
+	// 		this.props.setTotalUserCount(response.data.totalCount)
+	// 	})
+	// }
 
 	setCurrentPage = (i: number) => {
 		this.props.setCurrentPage(i)
@@ -76,12 +64,3 @@ export class UsersComponent extends React.Component<any, any> {
 		</>
 	}
 }
-
-export const UsersContainer = connect(mapStateToProps, {
-	follow,
-	unfollow,
-	addUsers,
-	setCurrentPage,
-	setTotalUserCount,
-	toggleIsFetching
-})(UsersComponent)
