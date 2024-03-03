@@ -1,7 +1,9 @@
 export const ADD_POST = "ADD-POST"
 export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+export const GET_PROFILE = "GET_PROFILE"
 
 const initialState = {
+	profile: null,
 	newPostText: "new post!!",
 	posts: [
 		{
@@ -44,6 +46,11 @@ export const profileReducer = (state: any = initialState, action: any) => {
 			newState.newPostText = action.newText
 			return newState
 		}
+		case GET_PROFILE: {
+			let newState = {...state}
+			newState.profile = action.profile
+			return newState
+		}
 		default:
 			return state
 	}
@@ -51,3 +58,4 @@ export const profileReducer = (state: any = initialState, action: any) => {
 
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const getProfile = (profile: any) => ({type: GET_PROFILE, profile})

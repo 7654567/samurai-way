@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
-import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
-import {Profile} from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
 import {Settings} from "./components/Settings/Settings";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
-import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+
 import {UsersContainer} from "./components/Users/UsersContainer";
+import {ProfileComponent, ProfileContainer} from "./components/Profile/ProfileContainer";
+import {HeaderContainer} from "./components/Header/HeaderContainer";
 // import {RootStateType} from "./redux/store";
 
 // type AppPropsTypes = {
@@ -20,11 +20,11 @@ function App(props: any) {
 
 	return (
 		<div className="App">
-			<Header/>
+			<HeaderContainer/>
 			<Navbar store={props.store}/>
 			<div className="content">
-				<Route path={"/profile"} render={() => <Profile/>}/>
-				<Route path={"/dialog"} render={() => <DialogsContainer/>}/>
+				<Route path={"/profile/:userId"} render={() => <ProfileContainer/>}/>
+				<Route path={"/dialog"} render={() => <ProfileComponent/>}/>
 				<Route path={"/users"} render={() => <UsersContainer/>}/>
 				<Route path={"/news"} render={() => <News/>}/>
 				<Route path={"/music"} render={() => <Music/>}/>

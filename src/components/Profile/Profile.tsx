@@ -10,9 +10,10 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 // }
 
 export const Profile = (props: any) => {
+	// debugger
 	return (
 		<>
-			<ProfileInfo/>
+			<ProfileInfo profile={props.profile}/>
 			<MyPostsContainer store={props.store}/>
 		</>
 	);

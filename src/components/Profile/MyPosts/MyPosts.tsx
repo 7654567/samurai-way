@@ -9,8 +9,6 @@ import {Post} from "./Post/Post";
 //
 // }
 export const MyPosts = (props: any) => {
-
-	console.log("=>(MyPosts.tsx:42) props", props);
 	const textArea: React.RefObject<any> = React.createRef()
 
 //TODO React.RefObject<any>

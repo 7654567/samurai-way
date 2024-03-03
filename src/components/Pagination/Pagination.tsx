@@ -3,7 +3,6 @@ import React from "react";
 
 export const Pagination = (props: any) => {
 	const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-	console.log("=>(Pagination.tsx:6) pagesCount", props);
 	const pages = []
 
 	for (let i = 1; i <= pagesCount; i++) pages.push(i)

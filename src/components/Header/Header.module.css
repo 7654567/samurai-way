@@ -1,7 +1,16 @@
 .header {
-    grid-area: h;
-    background-color: #fcc;
+	grid-area: h;
+	background-color: #fcc;
 }
+
 .header img {
-    width: 50px;
+	width: 50px;
+}
+
+.user {
+	float: right;
+}
+
+.user a {
+	color: green;
 }
