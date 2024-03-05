@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Dialogs.module.css'
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {
 	// DialogsPageType,
 	DialogType,
@@ -15,7 +15,7 @@ export const Dialogs = (props: any) => {
 	const state = props.dialogsPage
 
 
-	function addMessange(e: any) {
+	function addMessange() {
 		props.addMessange()
 	}
 

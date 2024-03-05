@@ -3,7 +3,7 @@ import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 // import {NavbarType} from "../../redux/store";
 
-export const Navbar = (props: any) => {
+export const Navbar = () => {
 	const state = [
 		{text: "Profiles", url: "/profile/2"},
 		{text: "Messanges", url: "/dialog"},

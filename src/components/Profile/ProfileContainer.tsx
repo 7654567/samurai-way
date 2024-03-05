@@ -1,13 +1,10 @@
 import {Profile} from "./Profile";
 import React from "react";
-import axios from "axios";
 import {connect} from "react-redux";
-import {getProfile, getProfileSucsess} from "../../redux/profile-reducer";
+import {getProfile} from "../../redux/profile-reducer";
 import {withRouter} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 import {getAuthUserData} from "../../redux/auth-reducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {Dialogs} from "../Dialogs/Dialogs";
 
 export class ProfileComponent extends React.Component<any, any> {
 	componentDidMount() {

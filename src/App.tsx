@@ -7,7 +7,7 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 
 import {UsersContainer} from "./components/Users/UsersContainer";
-import {ProfileComponent, ProfileContainer} from "./components/Profile/ProfileContainer";
+import {ProfileContainer} from "./components/Profile/ProfileContainer";
 import {HeaderContainer} from "./components/Header/HeaderContainer";
 import {Login} from "./components/Login/Login";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
@@ -18,12 +18,12 @@ import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 // 	dispatch: Function
 // }
 
-function App(props: any) {
+function App() {
 
 	return (
 		<div className="App">
 			<HeaderContainer/>
-			<Navbar store={props.store}/>
+			<Navbar/>
 			<div className="content">
 				<Route path={"/profile/:userId"} render={() => <ProfileContainer/>}/>
 				<Route path={"/dialog"} render={() => <DialogsContainer/>}/>
