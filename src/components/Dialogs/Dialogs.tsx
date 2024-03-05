@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {
 	// DialogsPageType,
 	DialogType,
@@ -24,6 +24,8 @@ export const Dialogs = (props: any) => {
 		props.onMessangeChange(text)
 	}
 
+	// if (!props.isAuth) return <Redirect to={"/login"}/>
+
 	return (
 		<>
 			<div className={s.dialogs}>
@@ -34,7 +36,7 @@ export const Dialogs = (props: any) => {
 
 					<form action={'#'}>
 						<textarea onChange={onMessangeChange}
-								  value={state.newMessangeText}></textarea>
+						          value={state.newMessangeText}></textarea>
 						<button onClick={addMessange}>add message</button>
 					</form>
 					{state.messenges.map((el: any, index: number) => <Messange messange={el} key={index}/>)}

@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 export const Navbar = (props: any) => {
 	const state = [
-		{text: "Profiles", url: "/profile"},
+		{text: "Profiles", url: "/profile/2"},
 		{text: "Messanges", url: "/dialog"},
 		{text: "Users", url: "/users"},
 		{text: "News", url: "/news"},

@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 export const ADD_POST = "ADD-POST"
 export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 export const GET_PROFILE = "GET_PROFILE"
@@ -58,4 +60,8 @@ export const profileReducer = (state: any = initialState, action: any) => {
 
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
-export const getProfile = (profile: any) => ({type: GET_PROFILE, profile})
+export const getProfileSucsess = (profile: any) => ({type: GET_PROFILE, profile})
+
+export const getProfile = (userId: number) => (dispatch: any) => {
+	usersAPI.getProfile(userId).then(response => dispatch(getProfileSucsess(response.data)))
+}
